@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d5d09ff0790f947bda954f2bc5f480, type: 3}
+  m_Name: Stage2Move
+  m_EditorClassIdentifier: 
+  redUp: 0
+  redDown: 0
+  redLeft: 0
+  redRight: 1
+  redUpLeft: 1
+  redUpRight: 0
+  redDownLeft: 1
+  redDownRight: 0
+  buleUp: 0
+  buleDown: 0
+  buleLeft: 1
+  buleRight: 0
+  buleUpLeft: 0
+  buleUpRight: 1
+  buleDownLeft: 0
+  buleDownRight: 1

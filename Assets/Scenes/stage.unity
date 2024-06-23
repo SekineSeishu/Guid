@@ -7128,6 +7128,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5829058359356182686, guid: d45224de0fecb214baf7dd38450778dc,
+        type: 3}
+      propertyPath: moveDirection
+      value: 
+      objectReference: {fileID: 11400000, guid: c3da392efb2945b4f942d4abc4c47679,
+        type: 2}
     - target: {fileID: 5958880031983340403, guid: d45224de0fecb214baf7dd38450778dc,
         type: 3}
       propertyPath: m_Layer
@@ -7330,8 +7336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6926ec3f7867847b3b09971c3accf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charaX: 0
-  charaZ: 0
   selectHighlight: {fileID: 0}
   higlightPrefab: {fileID: 6409079152743841138, guid: 81c55100599bd1b4da7a2fc1611bf80e,
     type: 3}
@@ -9062,6 +9066,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9154562117930899347, guid: 37dce933afb0a7c4b97ebfa8f05eb12b,
+        type: 3}
+      propertyPath: moveDirection
+      value: 
+      objectReference: {fileID: 11400000, guid: c3da392efb2945b4f942d4abc4c47679,
+        type: 2}
     - target: {fileID: 9164250878959021387, guid: 37dce933afb0a7c4b97ebfa8f05eb12b,
         type: 3}
       propertyPath: m_Layer

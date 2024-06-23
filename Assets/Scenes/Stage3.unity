@@ -286,6 +286,7 @@ MonoBehaviour:
   tutorialText1: {fileID: 0}
   tutorialText2: {fileID: 0}
   tutorialText3: {fileID: 0}
+  tutorialText4: {fileID: 0}
   layerNumber1: 8
   layerNumber2: 3
 --- !u!4 &485441063
@@ -669,6 +670,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 985690808145611266, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+        type: 3}
+      propertyPath: moveDirection
+      value: 
+      objectReference: {fileID: 11400000, guid: d562c7fae78548f4b985894f2a1e7c7f,
+        type: 2}
     - target: {fileID: 1104595906117429520, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
         type: 3}
       propertyPath: m_text
@@ -804,6 +811,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6542039631914262899, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+        type: 3}
+      propertyPath: moveDirection
+      value: 
+      objectReference: {fileID: 11400000, guid: d562c7fae78548f4b985894f2a1e7c7f,
+        type: 2}
     - target: {fileID: 6876320831255299007, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
         type: 3}
       propertyPath: m_LocalScale.x
