@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class HighlightManager : MonoBehaviour
 {
-    public int charaX;
-    public int charaZ;
     public static HighlightManager Instance;
+    private string characterName;
     public GameObject selectHighlight;
     public GameObject higlightPrefab;
     private List<GameObject> highlights = new List<GameObject>();
     public Transform highlightParet;
-    private ParticleSystem p;
+    //private ParticleSystem p;
 
     public void Awake()
     {
@@ -29,14 +28,20 @@ public class HighlightManager : MonoBehaviour
         }
         else
         {
-            charaX = Character.Instance.nowXpos;
-            charaZ = Character.Instance.nowZpos;
+            if (selectCharacter.red)
+            {
+                characterName = "red";
+            }
 
-            List<Vector3> validMoves = selectCharacter.GetValidMove();
+            if (selectCharacter.blue)
+            {
+                characterName = "red";
+            }
+
+            List<Vector3> validMoves = selectCharacter.moveDirection.GetValidMove(characterName, selectCharacter.nowXpos, selectCharacter.nowZpos);
 
             foreach (Vector3 move in validMoves)
             {
-                Debug.Log("a");
                 GameObject higlightObject = Instantiate(higlightPrefab, highlightParet);
                 higlightObject.transform.position = move;
                 highlights.Add(higlightObject);
@@ -55,16 +60,16 @@ public class HighlightManager : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(new Vector3(x, 0.5f, z), 0.3f);
 
-    foreach (Collider collider in colliders)
-    {
-        if (collider.CompareTag("StageBlock"))
+        foreach (Collider collider in colliders)
         {
-                Debug.Log("i");
-            return true; // StageBlockが存在する
+            if (collider.CompareTag("StageBlock"))
+            {
+                Debug.Log("地面ブロックあります");
+                return true; // StageBlockが存在する
+            }
         }
-    }
 
-    return false; // StageBlockが存在しない
+        return false; // StageBlockが存在しない
     }
 
     private bool IsCharacterPresentAt(float x, float z)
@@ -75,23 +80,23 @@ public class HighlightManager : MonoBehaviour
         {
             if (collider.CompareTag("Character"))
             {
-                Debug.Log("u");
+                Debug.Log("キャラクターはいません");
                 return false;//キャラクターが存在しない
             }
         }
         return true;//キャラクターが存在する
     }
 
-    public void CharaMove(Character selectCharacter,Transform targetpos)
+    public void CharaMove(Character selectCharacter, Transform targetpos)
     {
-            selectCharacter.targetPosition = targetpos;
-            selectHighlight = targetpos.gameObject;
-            ClearHighlights();
+        selectCharacter.targetPosition = targetpos;
+        selectHighlight = targetpos.gameObject;
+        ClearHighlights();
     }
 
     public void ClearHighlights()
     {
-        foreach(GameObject highlight in highlights)
+        foreach (GameObject highlight in highlights)
         {
             if (highlight != selectHighlight)
             {
@@ -103,12 +108,12 @@ public class HighlightManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
