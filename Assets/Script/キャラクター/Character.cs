@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Character : MonoBehaviour
 {
     public static Character Instance;
-    public MoveDirections moveDirection;
+    public MoveDirections moveDirection;//キャラクターの移動方向データ
     public Transform targetPosition;//移動先
     public Transform defaultRotation;//基本の向き
     private float movespeed = 0.7f;//移動スピード
@@ -25,8 +25,8 @@ public class Character : MonoBehaviour
     }
     void Start()
     {
-        //初期化　ゴールフラグとワープフラグを無しにする
-        OnWorp = false;
+        //初期化　ゴールフラグをOFF
+        OnWorp = false;//移動時以外ワープフラグをOFF
         redGoal = false;
         blueGoal = false;
         animator = GetComponent<Animator>();
@@ -45,7 +45,7 @@ public class Character : MonoBehaviour
             transform.LookAt(targetPosition);
             animator.SetBool("run", true);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, movespeed * Time.deltaTime);
-            OnWorp = true;
+            OnWorp = true;//移動中はワープフラグをオンにする
             if (transform.position == targetPosition.position)
             {
                 transform.rotation = Quaternion.Euler(-30, 180, 0);
