@@ -4,17 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - WriteGhost
-  - RedGhost
-  - BlueGhost
-  - WriteGoal
+  - SubCamera
+  - highlight
+  - Character
+  - StageBlock
   - RedGoal
   - BlueGoal
-  - Character
-  - highlight
-  - StageBlock
+  - WriteGoal
   - worp
-  - SubCamera
   layers:
   - Default
   - TransparentFX
@@ -22,7 +19,7 @@ TagManager:
   - Ghost
   - Water
   - UI
-  - Postprocess
+  - 
   - Gimic
   - Character
   - 
