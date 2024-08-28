@@ -7,22 +7,21 @@ using TMPro;
 
 public class SelectStage : MonoBehaviour
 {
-    public Fade fade;
-    public GameObject stage1;
-    public GameObject stage2;
-    public GameObject stage3;
-    public GameObject stageScene;
-    public GameObject playLueL;
-    public string LoadScene;
-    public GameObject Ghost;
+    public Fade fade;//フェイド
+    public GameObject stage1;//ステージ１のボタン
+    public GameObject stage2;//ステージ2のボタン
+    public GameObject stage3;//ステージ3のボタン
+    public GameObject stageScene;//詳細表示しているステージボタン
+    public GameObject playLueL;//ルールUI
+    public string LoadScene;//ロードシーン名
+    public GameObject Ghost;//アニメーションのキャラクター
     private Animator animator;
-    private AudioSource audioSource;
-    public AudioSource startSE;
-    private bool ON;
-    public TextMeshProUGUI playText;
+    private AudioSource audioSource;//SEを流す先
+    public AudioSource startSE;//ステージ移動する際のSE
+    public TextMeshProUGUI playText;//ルールボタンのテキスト
 
     //それぞれのUIをアニメーションをつけて表示する
-    public void SelectOnClick1()
+    public void SelectOnClick1()//ステージ１の詳細表示
     {
         if (StartBool.Instance.OpenImage)
         {
@@ -34,11 +33,11 @@ public class SelectStage : MonoBehaviour
             stage1.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBack);
             if (gameObject.transform.localScale == new Vector3(1, 1, 1))
             {
-                Debug.Log("clear");
+                Debug.Log("ステージ1");
             }
         }
     }
-    public void SelectOnClick2()
+    public void SelectOnClick2()//ステージ2の詳細表示
     {
         if (StartBool.Instance.OpenImage)
         {
@@ -50,11 +49,11 @@ public class SelectStage : MonoBehaviour
             stage2.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBack);
             if (gameObject.transform.localScale == new Vector3(1, 1, 1))
             {
-                Debug.Log("clear");
+                Debug.Log("ステージ2");
             }
         }
     }
-    public void SelectOnClick3()
+    public void SelectOnClick3()//ステージ3の詳細表示
     {
         if (StartBool.Instance.OpenImage)
         {
@@ -66,11 +65,11 @@ public class SelectStage : MonoBehaviour
             stage3.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBack);
             if (gameObject.transform.localScale == new Vector3(1, 1, 1))
             {
-                Debug.Log("clear");
+                Debug.Log("ステージ3");
             }
         }
     }
-    public void GoOnClick()
+    public void GoOnClick()//ステージ移動
     {
         startSE.Play();
         if (stageScene.transform.localScale == new Vector3 (1,1,1))
@@ -81,7 +80,7 @@ public class SelectStage : MonoBehaviour
         }
     }
 
-    public void BackOnClick()
+    public void BackOnClick()//選択ステージの詳細画面を閉じる
     {
         if (stageScene.transform.localScale == new Vector3(1, 1, 1))
         {
@@ -99,7 +98,7 @@ public class SelectStage : MonoBehaviour
             SceneManager.LoadScene(LoadScene);
         });
     }
-    public void playImage()
+    public void playImage()//ルールUIを表示する
     {
         if (StartBool.Instance.OpenImage)
         {
@@ -107,6 +106,7 @@ public class SelectStage : MonoBehaviour
             stage1.transform.localScale = new Vector3(0, 0, 0);
             stage2.transform.localScale = new Vector3(0, 0, 0);
             stage3.transform.localScale = new Vector3(0, 0, 0);
+            //ルールボタンをテキストの文字によって実行を変える
             if (playText.text == "遊び方" || playLueL.transform.localScale == new Vector3(0, 0, 0))
             {
                 playText.text = "閉じる";
@@ -122,6 +122,7 @@ public class SelectStage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //初期化
         stage1.SetActive(true);
         stage2.SetActive(true);
         stage3.SetActive(true);
@@ -132,13 +133,6 @@ public class SelectStage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playLueL.transform.localScale == new Vector3(0, 0, 0))
-        {
-            playText.text = "遊び方";
-        }
-        else if (playLueL.transform.localScale == new Vector3(1, 1, 1))
-        {
-            playText.text = "閉じる";
-        }
+
     }
 }
