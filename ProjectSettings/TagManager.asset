@@ -3,27 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - SubCamera
-  - highlight
-  - Character
-  - StageBlock
-  - RedGoal
-  - BlueGoal
-  - WriteGoal
-  - worp
-  - RedGimic
-  - BlueGimic
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ghost
+  - 
   - Water
   - UI
   - 
-  - Gimic
-  - Character
+  - 
+  - 
   - 
   - 
   - 
