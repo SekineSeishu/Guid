@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.010879467, g: 0.029094452, b: 0.04376064, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -286,6 +286,7 @@ MonoBehaviour:
   tutorialText1: {fileID: 0}
   tutorialText2: {fileID: 0}
   tutorialText3: {fileID: 0}
+  tutorialText4: {fileID: 0}
   layerNumber1: 8
   layerNumber2: 3
 --- !u!4 &485441063
@@ -669,6 +670,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 985690808145611266, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+        type: 3}
+      propertyPath: moveDirection
+      value: 
+      objectReference: {fileID: 11400000, guid: bc537443a9ea98a4999c8420597a52b5,
+        type: 2}
     - target: {fileID: 1104595906117429520, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
         type: 3}
       propertyPath: m_text
@@ -804,6 +811,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6542039631914262899, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+        type: 3}
+      propertyPath: moveDirection
+      value: 
+      objectReference: {fileID: 11400000, guid: bc537443a9ea98a4999c8420597a52b5,
+        type: 2}
     - target: {fileID: 6876320831255299007, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -899,6 +912,41 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8306525633326903630, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+        type: 3}
+      propertyPath: buttonType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8306525633326903630, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+        type: 3}
+      propertyPath: nextButton
+      value: 
+      objectReference: {fileID: 935180252}
+    - target: {fileID: 8306525633326903630, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+        type: 3}
+      propertyPath: retryButton
+      value: 
+      objectReference: {fileID: 1901707317}
+    - target: {fileID: 8306525633326903630, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+        type: 3}
+      propertyPath: selectButton
+      value: 
+      objectReference: {fileID: 935180253}
+    - target: {fileID: 8525227822258357777, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+        type: 3}
+      propertyPath: nextButton
+      value: 
+      objectReference: {fileID: 935180252}
+    - target: {fileID: 8525227822258357777, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+        type: 3}
+      propertyPath: retryButton
+      value: 
+      objectReference: {fileID: 1901707317}
+    - target: {fileID: 8525227822258357777, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+        type: 3}
+      propertyPath: selectButton
+      value: 
+      objectReference: {fileID: 935180253}
     - target: {fileID: 8534969470499336604, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
         type: 3}
       propertyPath: m_Layer
@@ -950,6 +998,30 @@ PrefabInstance:
       addedObject: {fileID: 1901707316}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9e36c81337b67a4e8fd0b4b26c0ac02, type: 3}
+--- !u!114 &935180252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3675665430563165944, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+    type: 3}
+  m_PrefabInstance: {fileID: 935180251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &935180253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4447312294852175007, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
+    type: 3}
+  m_PrefabInstance: {fileID: 935180251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &979988706 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6876320831255299007, guid: d9e36c81337b67a4e8fd0b4b26c0ac02,
@@ -1341,9 +1413,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1367488398557159658, guid: cc1e04cab22a1b9438fd27850a8ca85a,
         type: 3}
+      propertyPath: buttonType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367488398557159658, guid: cc1e04cab22a1b9438fd27850a8ca85a,
+        type: 3}
       propertyPath: fadeCanvas
       value: 
       objectReference: {fileID: 1697234573}
+    - target: {fileID: 1367488398557159658, guid: cc1e04cab22a1b9438fd27850a8ca85a,
+        type: 3}
+      propertyPath: nextButton
+      value: 
+      objectReference: {fileID: 935180252}
+    - target: {fileID: 1367488398557159658, guid: cc1e04cab22a1b9438fd27850a8ca85a,
+        type: 3}
+      propertyPath: retryButton
+      value: 
+      objectReference: {fileID: 1901707317}
+    - target: {fileID: 1367488398557159658, guid: cc1e04cab22a1b9438fd27850a8ca85a,
+        type: 3}
+      propertyPath: selectButton
+      value: 
+      objectReference: {fileID: 935180253}
     - target: {fileID: 3462039775697461642, guid: cc1e04cab22a1b9438fd27850a8ca85a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1515,6 +1607,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1901707315}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1901707317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6417062142535467620, guid: cc1e04cab22a1b9438fd27850a8ca85a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1901707315}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1930123147
 PrefabInstance:
   m_ObjectHideFlags: 0
