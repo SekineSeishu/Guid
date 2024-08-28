@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ImageFlicker : MonoBehaviour
 {
-	//インスペクターから設定するか、初期化時にGetComponentして、Imageへの参照を取得しておく。
+	//Imageの点滅
 	[SerializeField]
 	Image img;
 
@@ -20,16 +20,11 @@ public class ImageFlicker : MonoBehaviour
 	[Header("ループ終了時の色")]
 	[SerializeField]
 	Color32 endColor = new Color32(255, 255, 255, 64);
-    // Start is called before the first frame update
-    void Start()
-    {
-		
-
-	}
 
     // Update is called once per frame
     void Update()
     {
+		//画像を点滅させる
 		img.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time / duration, 1.0f));
 	}
 }
