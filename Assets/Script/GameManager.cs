@@ -6,18 +6,18 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private GameObject selectCharacter;
-    public int PlayCount;
-    public TMP_Text playCountText;
-    public GameObject resultUI;
-    public Character redGoal;
-    public Character blueGoal;
     public static GameManager Instance;
-    public bool Play;
-    private float SETime;
+    private GameObject selectCharacter;//選択キャラクター
+    public int PlayCount;//移動可能回数
+    public TMP_Text playCountText;//移動可能回数の表示テキスト
+    public GameObject resultUI;//リザルト
+    public Character redCharacter;//赤キャラクター
+    public Character blueCharacter;//青キャラクター
+    public bool Play;//移動可能フラグ
+    private float setTime;//リザルト出すための待ち時間
     private AudioSource audio;
     public GameObject GameOverText;
-    public GameObject endSE;
+    public AudioClip endSE;//クリアSE
 
     private void Awake()
     {
@@ -39,8 +39,7 @@ public class GameManager : MonoBehaviour
         {
             PlayCount = 20;
         }
-        SETime = 0;
-        endSE.SetActive(false);
+        setTime = 0;
         GameOverText.SetActive(false);
         Play = true;
         audio = GetComponent<AudioSource>();
@@ -58,21 +57,23 @@ public class GameManager : MonoBehaviour
             }
         }
         //クリア時の演出
-        if (redGoal.redGoal && blueGoal.blueGoal)
+        if (redCharacter.redGoal && blueCharacter.blueGoal)
         {
+            //クリア後一定時間経ってからSEとUIを出す
             Debug.Log("c");
-            SETime += Time.deltaTime;
-            if (SETime >= 1f)
+            setTime += Time.deltaTime;
+            if (setTime >= 1f)
             {
-                endSE.SetActive(true);
+                audio.PlayOneShot(endSE);
             }
             Invoke("stageClear", 2f);
         }
         //ゲームオーバー時の演出
-        if (PlayCount == 0　&& (!redGoal.redGoal || !blueGoal.blueGoal))
+        if (PlayCount == 0　&& (!redCharacter.redGoal || !blueCharacter.blueGoal))
         {
-            SETime += Time.deltaTime;
-            if (SETime >= 2f)
+            //一定時間経ってからUIを出す
+            setTime += Time.deltaTime;
+            if (setTime >= 2f)
             {
                 GameOverText.SetActive(true);
             }
@@ -80,13 +81,16 @@ public class GameManager : MonoBehaviour
         playCountText.text = PlayCount.ToString();
     }
 
+    //リザルト表示
     private void stageClear()
     {
         resultUI.SetActive(true);
     }
     
+    //選択キャラクターを取得
     public void GetCharacter()
     {
+        //マウスカーソル先にrayを飛ばす
         GameObject targetObject = null;
         Vector3 mousePosition = Input.mousePosition;
 
