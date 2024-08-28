@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Character", menuName = "ScriptableObjects/MoveDirections", order = 1)]
 public class MoveDirections : ScriptableObject
 {
+    //キャラクターの移動方向
     [Header("レッド")]//赤キャラクターの移動できる方向
     public bool redUp;
     public bool redDown;
@@ -29,7 +30,7 @@ public class MoveDirections : ScriptableObject
     {
         //選択されたキャラクターの現在のステージの移動できる方向を渡す
         List<Vector3> validMoves = new List<Vector3>();
-        if (character == "red")
+        if (character == "red")//赤キャラクター
         {
             if (redUp)
                 validMoves.Add(new Vector3(xPos, 0.5f, zPos + 1));
@@ -48,7 +49,7 @@ public class MoveDirections : ScriptableObject
             if (redDownRight)
                 validMoves.Add(new Vector3(xPos - 1, 0.5f, zPos + 1));
         }
-        if (character == "blue")
+        if (character == "blue")//青キャラクター
         {
             if (buleUp)
                 validMoves.Add(new Vector3(xPos, 0.5f, zPos + 1));
