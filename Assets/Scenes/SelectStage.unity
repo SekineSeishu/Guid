@@ -510,10 +510,9 @@ GameObject:
   - component: {fileID: 186145359}
   - component: {fileID: 186145358}
   - component: {fileID: 186145357}
-  - component: {fileID: 186145356}
   - component: {fileID: 186145355}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: backButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -637,28 +636,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &186145356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186145353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba1817870a061144ba473cd4c142c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 1378796897}
-  stage1: {fileID: 946464047}
-  stage2: {fileID: 1759531295}
-  stage3: {fileID: 1179254067}
-  stageScene: {fileID: 1759531295}
-  playLueL: {fileID: 401822826}
-  LoadScene: stage2
-  Ghost: {fileID: 1816061425}
-  startSE: {fileID: 0}
-  playText: {fileID: 1922959387}
 --- !u!114 &186145357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,7 +680,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 186145356}
+      - m_Target: {fileID: 616078305}
         m_TargetAssemblyTypeName: SelectStage, Assembly-CSharp
         m_MethodName: BackOnClick
         m_Mode: 1
@@ -765,7 +742,6 @@ GameObject:
   - component: {fileID: 186157758}
   - component: {fileID: 186157757}
   - component: {fileID: 186157756}
-  - component: {fileID: 186157760}
   - component: {fileID: 186157759}
   m_Layer: 5
   m_Name: Button
@@ -839,7 +815,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 186157760}
+      - m_Target: {fileID: 616078305}
         m_TargetAssemblyTypeName: SelectStage, Assembly-CSharp
         m_MethodName: playImage
         m_Mode: 1
@@ -985,28 +961,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &186157760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186157754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba1817870a061144ba473cd4c142c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 0}
-  stage1: {fileID: 946464047}
-  stage2: {fileID: 1759531295}
-  stage3: {fileID: 1179254067}
-  stageScene: {fileID: 0}
-  playLueL: {fileID: 401822826}
-  LoadScene: 
-  Ghost: {fileID: 0}
-  startSE: {fileID: 0}
-  playText: {fileID: 1922959387}
 --- !u!1 &216400813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,6 +1583,8 @@ GameObject:
   - component: {fileID: 616078303}
   - component: {fileID: 616078302}
   - component: {fileID: 616078301}
+  - component: {fileID: 616078305}
+  - component: {fileID: 616078306}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1722,6 +1678,127 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &616078305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616078300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba1817870a061144ba473cd4c142c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade: {fileID: 1378796897}
+  stage1: {fileID: 946464047}
+  stage2: {fileID: 1759531295}
+  stage3: {fileID: 1179254067}
+  stageScene: {fileID: 1759531295}
+  playLueL: {fileID: 401822826}
+  loadScene: 
+  Ghost: {fileID: 1816061425}
+  audioSource: {fileID: 0}
+  startSE: {fileID: 8300000, guid: a65e502cf93fba94ea5b8baa91f9c15a, type: 3}
+  buttonSE: {fileID: 8300000, guid: a9bbd47afc14acd47b5af2a6bfadcd00, type: 3}
+  playText: {fileID: 1922959387}
+  onClose: 0
+--- !u!82 &616078306
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616078300}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a9bbd47afc14acd47b5af2a6bfadcd00, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.215
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &733298998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2915,10 +2992,9 @@ GameObject:
   - component: {fileID: 1149689007}
   - component: {fileID: 1149689006}
   - component: {fileID: 1149689005}
-  - component: {fileID: 1149689004}
   - component: {fileID: 1149689003}
   m_Layer: 5
-  m_Name: Button
+  m_Name: stageButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3042,28 +3118,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1149689004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149689001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba1817870a061144ba473cd4c142c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 1378796897}
-  stage1: {fileID: 946464047}
-  stage2: {fileID: 1759531295}
-  stage3: {fileID: 1179254067}
-  stageScene: {fileID: 1179254067}
-  playLueL: {fileID: 401822826}
-  LoadScene: stage2
-  Ghost: {fileID: 1816061425}
-  startSE: {fileID: 216400815}
-  playText: {fileID: 0}
 --- !u!114 &1149689005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3108,9 +3162,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1149689004}
+      - m_Target: {fileID: 616078305}
         m_TargetAssemblyTypeName: SelectStage, Assembly-CSharp
-        m_MethodName: GoOnClick
+        m_MethodName: GoStageClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3384,10 +3438,9 @@ GameObject:
   - component: {fileID: 1208671001}
   - component: {fileID: 1208671000}
   - component: {fileID: 1208670999}
-  - component: {fileID: 1208671002}
   - component: {fileID: 1208671003}
   m_Layer: 5
-  m_Name: Button
+  m_Name: stageButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3459,9 +3512,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1208671002}
+      - m_Target: {fileID: 616078305}
         m_TargetAssemblyTypeName: SelectStage, Assembly-CSharp
-        m_MethodName: GoOnClick
+        m_MethodName: GoStageClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3509,28 +3562,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208670997}
   m_CullTransparentMesh: 1
---- !u!114 &1208671002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208670997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba1817870a061144ba473cd4c142c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 1378796897}
-  stage1: {fileID: 946464047}
-  stage2: {fileID: 1759531295}
-  stage3: {fileID: 1179254067}
-  stageScene: {fileID: 946464047}
-  playLueL: {fileID: 401822826}
-  LoadScene: stage
-  Ghost: {fileID: 1816061425}
-  startSE: {fileID: 216400815}
-  playText: {fileID: 1922959387}
 --- !u!82 &1208671003
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3969,7 +4000,6 @@ GameObject:
   - component: {fileID: 1306691081}
   - component: {fileID: 1306691077}
   - component: {fileID: 1306691076}
-  - component: {fileID: 1306691079}
   - component: {fileID: 1306691080}
   m_Layer: 5
   m_Name: Button (1)
@@ -4045,7 +4075,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1306691079}
+      - m_Target: {fileID: 616078305}
         m_TargetAssemblyTypeName: SelectStage, Assembly-CSharp
         m_MethodName: SelectOnClick2
         m_Mode: 1
@@ -4095,28 +4125,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306691074}
   m_CullTransparentMesh: 1
---- !u!114 &1306691079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306691074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba1817870a061144ba473cd4c142c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 1378796897}
-  stage1: {fileID: 946464047}
-  stage2: {fileID: 1759531295}
-  stage3: {fileID: 1179254067}
-  stageScene: {fileID: 0}
-  playLueL: {fileID: 401822826}
-  LoadScene: stage2
-  Ghost: {fileID: 1816061425}
-  startSE: {fileID: 0}
-  playText: {fileID: 1922959387}
 --- !u!82 &1306691080
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4457,10 +4465,9 @@ GameObject:
   - component: {fileID: 1350687959}
   - component: {fileID: 1350687958}
   - component: {fileID: 1350687957}
-  - component: {fileID: 1350687956}
   - component: {fileID: 1350687955}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: backButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4584,28 +4591,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1350687956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350687953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba1817870a061144ba473cd4c142c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 1378796897}
-  stage1: {fileID: 946464047}
-  stage2: {fileID: 1759531295}
-  stage3: {fileID: 1179254067}
-  stageScene: {fileID: 1179254067}
-  playLueL: {fileID: 401822826}
-  LoadScene: stage3
-  Ghost: {fileID: 1816061425}
-  startSE: {fileID: 0}
-  playText: {fileID: 0}
 --- !u!114 &1350687957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4650,7 +4635,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1350687956}
+      - m_Target: {fileID: 616078305}
         m_TargetAssemblyTypeName: SelectStage, Assembly-CSharp
         m_MethodName: BackOnClick
         m_Mode: 1
@@ -5029,10 +5014,9 @@ GameObject:
   - component: {fileID: 1611234219}
   - component: {fileID: 1611234218}
   - component: {fileID: 1611234217}
-  - component: {fileID: 1611234221}
   - component: {fileID: 1611234220}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: backButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5104,7 +5088,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1611234221}
+      - m_Target: {fileID: 616078305}
         m_TargetAssemblyTypeName: SelectStage, Assembly-CSharp
         m_MethodName: BackOnClick
         m_Mode: 1
@@ -5250,28 +5234,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1611234221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611234215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba1817870a061144ba473cd4c142c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 0}
-  stage1: {fileID: 946464047}
-  stage2: {fileID: 1759531295}
-  stage3: {fileID: 1179254067}
-  stageScene: {fileID: 946464047}
-  playLueL: {fileID: 401822826}
-  LoadScene: stage
-  Ghost: {fileID: 1816061425}
-  startSE: {fileID: 0}
-  playText: {fileID: 1922959387}
 --- !u!1 &1699458033
 GameObject:
   m_ObjectHideFlags: 0
@@ -5360,10 +5322,9 @@ GameObject:
   - component: {fileID: 1713721691}
   - component: {fileID: 1713721690}
   - component: {fileID: 1713721689}
-  - component: {fileID: 1713721688}
   - component: {fileID: 1713721687}
   m_Layer: 5
-  m_Name: Button
+  m_Name: stageButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5487,28 +5448,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1713721688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713721685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba1817870a061144ba473cd4c142c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 1378796897}
-  stage1: {fileID: 946464047}
-  stage2: {fileID: 1759531295}
-  stage3: {fileID: 1179254067}
-  stageScene: {fileID: 1759531295}
-  playLueL: {fileID: 401822826}
-  LoadScene: stage3
-  Ghost: {fileID: 1816061425}
-  startSE: {fileID: 216400815}
-  playText: {fileID: 1922959387}
 --- !u!114 &1713721689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5553,9 +5492,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1713721688}
+      - m_Target: {fileID: 616078305}
         m_TargetAssemblyTypeName: SelectStage, Assembly-CSharp
-        m_MethodName: GoOnClick
+        m_MethodName: GoStageClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5772,7 +5711,6 @@ GameObject:
   - component: {fileID: 1761002248}
   - component: {fileID: 1761002247}
   - component: {fileID: 1761002252}
-  - component: {fileID: 1761002250}
   - component: {fileID: 1761002251}
   m_Layer: 5
   m_Name: Button
@@ -5848,7 +5786,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1761002250}
+      - m_Target: {fileID: 616078305}
         m_TargetAssemblyTypeName: SelectStage, Assembly-CSharp
         m_MethodName: SelectOnClick1
         m_Mode: 1
@@ -5898,28 +5836,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761002245}
   m_CullTransparentMesh: 1
---- !u!114 &1761002250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761002245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba1817870a061144ba473cd4c142c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 1378796897}
-  stage1: {fileID: 946464047}
-  stage2: {fileID: 1759531295}
-  stage3: {fileID: 1179254067}
-  stageScene: {fileID: 0}
-  playLueL: {fileID: 401822826}
-  LoadScene: stage
-  Ghost: {fileID: 1816061425}
-  startSE: {fileID: 0}
-  playText: {fileID: 1922959387}
 --- !u!82 &1761002251
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6955,7 +6871,6 @@ GameObject:
   - component: {fileID: 2067333199}
   - component: {fileID: 2067333198}
   - component: {fileID: 2067333203}
-  - component: {fileID: 2067333201}
   - component: {fileID: 2067333202}
   m_Layer: 5
   m_Name: Button (2)
@@ -7031,7 +6946,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2067333201}
+      - m_Target: {fileID: 616078305}
         m_TargetAssemblyTypeName: SelectStage, Assembly-CSharp
         m_MethodName: SelectOnClick3
         m_Mode: 1
@@ -7081,28 +6996,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067333196}
   m_CullTransparentMesh: 1
---- !u!114 &2067333201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067333196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba1817870a061144ba473cd4c142c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 1378796897}
-  stage1: {fileID: 946464047}
-  stage2: {fileID: 1759531295}
-  stage3: {fileID: 1179254067}
-  stageScene: {fileID: 0}
-  playLueL: {fileID: 401822826}
-  LoadScene: stage3
-  Ghost: {fileID: 1816061425}
-  startSE: {fileID: 0}
-  playText: {fileID: 1922959387}
 --- !u!82 &2067333202
 AudioSource:
   m_ObjectHideFlags: 0
