@@ -5,17 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class BloomManager : MonoBehaviour
 {
+    //チュートリアル時の演出
     public static BloomManager Instance;
-    public GameObject cameraA;
-    public GameObject BloomA;
-    public GameObject tutorialText1;
-    public GameObject tutorialText2;
-    public GameObject tutorialText3;
-    public GameObject tutorialText4;
-    private GameObject selectBloom;
-    public int layerNumber1;
-    public int layerNumber2;
-    private bool playTutorial;
+    public GameObject cameraA;//カメラ
+    public GameObject BloomA;//ブルーム
+    public GameObject tutorialText1;//チュートリアルテキスト１
+    public GameObject tutorialText2;//チュートリアルテキスト２
+    public GameObject tutorialText3;//チュートリアルテキスト３
+    public GameObject tutorialText4;//チュートリアルテキスト４
+    private GameObject selectBloom;//ブルームをかけているキャラクター
+    public int layerNumber1;//レイヤー１
+    public int layerNumber2;//レイヤー２
+    private bool playTutorial;//チュートリアルフラグ
 
     public void Awake()
     {
@@ -46,6 +47,7 @@ public class BloomManager : MonoBehaviour
         {
             ClearBloom();
         }
+        //チュートリアルステージなら次のチュートリアルテキストを出す
         if (playTutorial)
         {
             tutorialText1.SetActive(false);
@@ -55,7 +57,8 @@ public class BloomManager : MonoBehaviour
         selectCharacter.SetLayerRecursively(layerNumber2);
         BloomA.layer = layerNumber2;
     }
-    public void ChangeBloom()
+    //次のチュートリアルテキスト
+    public void ChangeBloom()//移動可能先をクリック時
     {
         if (playTutorial)
         {
@@ -64,15 +67,19 @@ public class BloomManager : MonoBehaviour
         }
             Invoke("tutorial2", 2);
     }
-    public void tutorial2()
+
+    //最後のチュートリアルテキストを表示する
+    public void rastTutolial()
     {
         tutorialText3.SetActive(false);
         if (playTutorial)
         {
             tutorialText4.SetActive(true);
-            playTutorial = false;
+            playTutorial = false;//チュートリアルフラグをOFFにする
         }
     }
+
+    //ブルームを戻す
     public void ClearBloom()
     {
         selectBloom.SetLayerRecursively(layerNumber1);
