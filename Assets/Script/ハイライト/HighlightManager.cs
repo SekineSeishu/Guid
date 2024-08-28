@@ -5,12 +5,11 @@ using UnityEngine;
 public class HighlightManager : MonoBehaviour
 {
     public static HighlightManager Instance;
-    private string characterName;
-    public GameObject selectHighlight;
-    public GameObject higlightPrefab;
-    private List<GameObject> highlights = new List<GameObject>();
-    public Transform highlightParet;
-    //private ParticleSystem p;
+    private string characterName;//キャラクターの名前
+    public GameObject selectHighlight;//選択したハイライトオブジェクト
+    public GameObject higlightPrefab;////移動可能ハイライトオブジェクト
+    private List<GameObject> highlights = new List<GameObject>();//移動可能ハイライトリスト
+    public Transform highlightParet;//移動可能ハイライトの親オブジェクト
 
     public void Awake()
     {
@@ -56,6 +55,7 @@ public class HighlightManager : MonoBehaviour
         }
     }
 
+    //移動可能ハイライト位置の地面ブロックフラグ
     private bool IsStageBlockPresentAt(float x, float z)
     {
         Collider[] colliders = Physics.OverlapSphere(new Vector3(x, 0.5f, z), 0.3f);
@@ -72,6 +72,7 @@ public class HighlightManager : MonoBehaviour
         return false; // StageBlockが存在しない
     }
 
+    //移動可能ハイライト位置のキャラクターフラグ
     private bool IsCharacterPresentAt(float x, float z)
     {
         Collider[] colliders = Physics.OverlapSphere(new Vector3(x, 0.5f, z), 0.3f);
@@ -87,6 +88,7 @@ public class HighlightManager : MonoBehaviour
         return true;//キャラクターが存在する
     }
 
+    //キャラクターを選択したハイライトオブジェクトの位置に移動
     public void CharaMove(Character selectCharacter, Transform targetpos)
     {
         selectCharacter.targetPosition = targetpos;
@@ -94,6 +96,7 @@ public class HighlightManager : MonoBehaviour
         ClearHighlights();
     }
 
+    //選択したハイライトオブジェクト以外を削除
     public void ClearHighlights()
     {
         foreach (GameObject highlight in highlights)

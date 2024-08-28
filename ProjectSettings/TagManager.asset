@@ -12,6 +12,8 @@ TagManager:
   - BlueGoal
   - WriteGoal
   - worp
+  - RedGimic
+  - BlueGimic
   layers:
   - Default
   - TransparentFX
