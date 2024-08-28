@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Clear : MonoBehaviour
 {
     public static Clear Instance;
-    public GameObject activeParticle;
+    public GameObject activeParticle;//ゴール到着時に出現するパーティクル
     private AudioSource audio;
     //ゴール取得
     public bool redClear;
@@ -18,6 +18,7 @@ public class Clear : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //それぞれのキャラクターがゴールインしたらパーティクルを出現する
         Character c = other.gameObject.GetComponent<Character>();
         if (c.red && gameObject.tag == "RedGoal")
         {
