@@ -47,7 +47,7 @@ public class MoveDirections : ScriptableObject
             if (redDownLeft)
                 validMoves.Add(new Vector3(xPos - 1, 0.5f, zPos - 1));
             if (redDownRight)
-                validMoves.Add(new Vector3(xPos - 1, 0.5f, zPos + 1));
+                validMoves.Add(new Vector3(xPos + 1, 0.5f, zPos - 1));
         }
         if (character == "blue")//青キャラクター
         {
@@ -66,7 +66,7 @@ public class MoveDirections : ScriptableObject
             if (buleDownLeft)
                 validMoves.Add(new Vector3(xPos - 1, 0.5f, zPos - 1));
             if (buleDownRight)
-                validMoves.Add(new Vector3(xPos - 1, 0.5f, zPos + 1));
+                validMoves.Add(new Vector3(xPos + 1, 0.5f, zPos - 1));
         }
         return validMoves;
     }
