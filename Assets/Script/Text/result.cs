@@ -5,11 +5,12 @@ using DG.Tweening;
 
 public class result : MonoBehaviour
 {
-    public GameManager GM;
+    [SerializeField] private GameManager GM;
     //ステージごとに実績を作ってリザルトで表示する
-    public GameObject OneStar;//リザルトで出す星1
-    public GameObject TwoStar;//リザルトで出す星2
-    public GameObject ThreeStar;//リザルトで出す星3
+    [SerializeField] private GameObject OneStar;//リザルトで出す星1
+    [SerializeField] private GameObject TwoStar;//リザルトで出す星2
+    [SerializeField] private GameObject ThreeStar;//リザルトで出す星3
+    [SerializeField] private AudioClip getStarSE;
     public int OneCount;//移動回数以内１
     public int TwoCount;//移動回数以内２
     private AudioSource audio;
@@ -25,43 +26,41 @@ public class result : MonoBehaviour
 
         //DoTweenを使ってモーションを付けながらリザルトを表示する
         this.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBack);
+
         //リザルトが表示されたら実績の確認をする
-        if (gameObject.transform.localScale == new Vector3(1,1,1))
-        {
-            Debug.Log("clear");
-            Debug.Log(GM.PlayCount);
-            //クリア時にそれぞれの条件を達成しているかの確認
-            if (GM.PlayCount > OneCount)//残り移動回数が指定回数以内
-            {
-                Invoke("oneStar", 1);
-            }
-            if (GM.PlayCount > TwoCount)//残り移動回数が指定回数以内
-            {
-                Invoke("twoStar", 2);
-            }
-            Invoke("threeStar", 3);//ステージクリア
-        }
+        StartCoroutine(GetStar());
     }
 
+    private IEnumerator GetStar()
+    {
+        yield return new WaitForSeconds(1);
+        Debug.Log("clear");
+        Debug.Log(GM.PlayCount);
+
+        //クリア時にそれぞれの条件を達成しているかの確認
+        //達成していた場合星の獲得演出を実行する
+        if (GM.PlayCount > OneCount)//残り移動回数が指定回数以内
+        {
+            yield return new WaitForSeconds(1);
+            Debug.Log("one");
+            audio.PlayOneShot(getStarSE);
+            OneStar.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBack);
+        }
+        if (GM.PlayCount > TwoCount)//残り移動回数が指定回数以内
+        {
+            yield return new WaitForSeconds(1);
+            Debug.Log("two");
+            audio.PlayOneShot(getStarSE);
+            TwoStar.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBack);
+        }
+        Debug.Log("Three");
+        //ステージクリア
+        yield return new WaitForSeconds(1);
+        audio.PlayOneShot(getStarSE);
+        ThreeStar.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBack); 
+    }
     void Update()
     {
-
-    }
-
-    //達成していた場合星の獲得演出を実行する
-    private void oneStar()
-    {
-        OneStar.SetActive(true);
-        OneStar.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBack);
-    }
-    private void twoStar()
-    {
-        TwoStar.SetActive(true);
-        TwoStar.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBack);
-    }
-    private void threeStar()
-    {
-        ThreeStar.SetActive(true);
-        ThreeStar.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBack);
+       
     }
 }
