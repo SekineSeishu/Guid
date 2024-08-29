@@ -817,7 +817,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 616078305}
         m_TargetAssemblyTypeName: SelectStage, Assembly-CSharp
-        m_MethodName: playImage
+        m_MethodName: LueLImage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1694,15 +1694,13 @@ MonoBehaviour:
   stage1: {fileID: 946464047}
   stage2: {fileID: 1759531295}
   stage3: {fileID: 1179254067}
-  stageScene: {fileID: 1759531295}
+  stageScene: {fileID: 0}
   playLueL: {fileID: 401822826}
-  loadScene: 
   Ghost: {fileID: 1816061425}
   audioSource: {fileID: 0}
   startSE: {fileID: 8300000, guid: a65e502cf93fba94ea5b8baa91f9c15a, type: 3}
   buttonSE: {fileID: 8300000, guid: a9bbd47afc14acd47b5af2a6bfadcd00, type: 3}
   playText: {fileID: 1922959387}
-  onClose: 0
 --- !u!82 &616078306
 AudioSource:
   m_ObjectHideFlags: 0

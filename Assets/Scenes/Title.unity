@@ -862,8 +862,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play to Click
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bd67cfd471b70e14d9e3191c47ec3777, type: 2}
-  m_sharedMaterial: {fileID: 1716040257019842468, guid: bd67cfd471b70e14d9e3191c47ec3777,
+  m_fontAsset: {fileID: 11400000, guid: 3794759bfb3552448b08095d688aee49, type: 2}
+  m_sharedMaterial: {fileID: -2995407680228246479, guid: 3794759bfb3552448b08095d688aee49,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
