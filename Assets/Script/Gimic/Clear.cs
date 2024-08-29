@@ -7,48 +7,31 @@ public class Clear : MonoBehaviour
 {
     public static Clear Instance;
     public GameObject activeParticle;//ゴール到着時に出現するパーティクル
+    [SerializeField] private AudioClip goalSE;//ゴール時SE
     private AudioSource audio;
-    //ゴール取得
-    public bool redClear;
-    public bool blueClear;
 
+    void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
     private void Awake()
     {
         Instance = this;
     }
     private void OnTriggerEnter(Collider other)
     {
-        //それぞれのキャラクターがゴールインしたらパーティクルを出現する
-        Character c = other.gameObject.GetComponent<Character>();
-        if (c.red && gameObject.tag == "RedGoal")
-        {
-            audio.Play();
-            GameObject FX = Instantiate(activeParticle);
-            FX.transform.position = gameObject.transform.position;
-            c.redGoal = true;
-            Debug.Log("red");
-        }
-        if (c.blue && gameObject.tag == "BlueGoal")
-        {
-            audio.Play();
-            GameObject FX = Instantiate(activeParticle);
-            FX.transform.position = gameObject.transform.position;
-            c.blueGoal = true;
-            Debug.Log("Blue");
-        }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        audio = GetComponent<AudioSource>();
+        //キャラクターがゴールインしたらパーティクルを出現する
+        Character character = other.gameObject.GetComponent<Character>();
+        audio.PlayOneShot(goalSE);
+        GameObject FX = Instantiate(activeParticle);
+         FX.transform.position = gameObject.transform.position;
+         character.goal = true;
+         Debug.Log("RedGoal");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (redClear && blueClear)
-        {
-            Debug.Log("Clear");
-        }
+
     }
 }
