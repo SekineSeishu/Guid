@@ -37,10 +37,6 @@ public class tutorialManager : MonoBehaviour
             tutorialText3.SetActive(false);
             tutorialText4.SetActive(true);
         }
-        else if (tutorialText4.activeInHierarchy)
-        {
-            tutorialText4.SetActive(false);
-        }
     }
 
         // Update is called once per frame
