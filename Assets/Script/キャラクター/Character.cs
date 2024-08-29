@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum characterType
+public enum characterType//ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ç¨®é¡
 {
     Red,
     Blue
@@ -11,17 +11,17 @@ public enum characterType
 
 public class Character : MonoBehaviour
 {
-    public characterType type;
+    public characterType type;//ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ç¨®é¡
     public static Character Instance;
-    public MoveDirections moveDirection;//ƒLƒƒƒ‰ƒNƒ^[‚ÌˆÚ“®•ûŒüƒf[ƒ^
-    public Transform targetPosition;//ˆÚ“®æ
-    public Transform defaultRotation;//Šî–{‚ÌŒü‚«
-    private float movespeed = 0.7f;//ˆÚ“®ƒXƒs[ƒh
+    public MoveDirections moveDirection;//ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ç§»å‹•æ–¹å‘ãƒ‡ãƒ¼ã‚¿
+    public Transform targetPosition;//ç§»å‹•å…ˆ
+    public Transform defaultRotation;//åŸºæœ¬ã®å‘ã
+    private float movespeed = 0.7f;//ç§»å‹•ã‚¹ãƒ”ãƒ¼ãƒ‰
     private Animator animator;
-    public bool goal;//Ô—H—ì‚ÌƒS[ƒ‹ƒtƒ‰ƒO
-    public int nowXpos;//Œ»İ‚Ìx’l
-    public int nowZpos;//Œ»İ‚Ìy’l
-    public bool OnWorp;//ƒ[ƒvƒtƒ‰ƒO
+    public bool goal;//èµ¤å¹½éœŠã®ã‚´ãƒ¼ãƒ«ãƒ•ãƒ©ã‚°
+    public int nowXpos;//ç¾åœ¨ã®xå€¤
+    public int nowZpos;//ç¾åœ¨ã®yå€¤
+    public bool OnWorp;//ãƒ¯ãƒ¼ãƒ—ãƒ•ãƒ©ã‚°
 
     public void Awake()
     {
@@ -29,11 +29,11 @@ public class Character : MonoBehaviour
     }
     void Start()
     {
-        //‰Šú‰»@ƒS[ƒ‹ƒtƒ‰ƒO‚ğOFF
-        OnWorp = false;//ˆÚ“®ˆÈŠOƒ[ƒvƒtƒ‰ƒO‚ğOFF
+        //åˆæœŸåŒ–ã€€ã‚´ãƒ¼ãƒ«ãƒ•ãƒ©ã‚°ã‚’OFF
+        OnWorp = false;//ç§»å‹•æ™‚ä»¥å¤–ãƒ¯ãƒ¼ãƒ—ãƒ•ãƒ©ã‚°ã‚’OFF
         goal = false;
         animator = GetComponent<Animator>();
-        //Œ»‘ã‚Ì‰ŠúˆÊ’u‚ğ“n‚·
+        //ç¾ä»£ã®åˆæœŸä½ç½®ã‚’æ¸¡ã™
         nowXpos = (int)transform.position.x;
         nowZpos = (int)transform.position.z;
     }
@@ -41,14 +41,14 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ƒLƒƒƒ‰ƒNƒ^[‚ÌˆÚ“®
+        //ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ç§»å‹•
         if (targetPosition != null)
         {
-            Debug.Log("ˆÚ“®’†I");
+            Debug.Log("ç§»å‹•ä¸­ï¼");
             transform.LookAt(targetPosition);
             animator.SetBool("run", true);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, movespeed * Time.deltaTime);
-            OnWorp = true;//ˆÚ“®’†‚Íƒ[ƒvƒtƒ‰ƒO‚ğƒIƒ“‚É‚·‚é
+            OnWorp = true;//ç§»å‹•ä¸­ã¯ãƒ¯ãƒ¼ãƒ—ãƒ•ãƒ©ã‚°ã‚’ã‚ªãƒ³ã«ã™ã‚‹
             if (transform.position == targetPosition.position)
             {
                 transform.rotation = Quaternion.Euler(-30, 180, 0);
