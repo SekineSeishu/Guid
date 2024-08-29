@@ -5,15 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class FadeIN : MonoBehaviour
 {
-    public Fade fade;
-    public string LoadScene;
+    private Fade fade;
+
+    public void In(string loadScene)
+    {
+        fade =  gameObject.GetComponent<Fade>();
+        fade.FadeIn(3f, () =>
+        {
+            SceneManager.LoadScene(loadScene);
+        });
+    }
     // Start is called before the first frame update
     void Start()
     {
-        fade.FadeIn(3f, () =>
-        {
-            SceneManager.LoadScene(LoadScene);
-        });
+
     }
 
     // Update is called once per frame
