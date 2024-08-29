@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UniRx;
 using UnityEngine.UI;
 
-enum ButtonType
+enum ButtonType//ãƒœã‚¿ãƒ³ã®ç¨®é¡
 {
     select,
     retry,
@@ -15,29 +15,29 @@ enum ButtonType
 public class ButtonManager : MonoBehaviour
 {
 
-    [SerializeField] private Button selectButton;//‘I‘ğ‰æ–Ê‚É–ß‚éƒ{ƒ^ƒ“
-    [SerializeField] private Button retryButton;//ƒŠƒgƒ‰ƒCƒ{ƒ^ƒ“
-    [SerializeField] private Button nextButton;//Ÿ‚ÌƒXƒe[ƒWˆÚ“®ƒ{ƒ^ƒ“
-    [SerializeField] private AudioClip clickSE;//ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚ÌSE
-    public string   nextLoadScene;//Ÿ‚ÌƒXƒe[ƒW–¼
-    public string   retryLoadScene;//¡‚ÌƒXƒe[ƒW–¼
+    [SerializeField] private Button selectButton;//é¸æŠç”»é¢ã«æˆ»ã‚‹ãƒœã‚¿ãƒ³
+    [SerializeField] private Button retryButton;//ãƒªãƒˆãƒ©ã‚¤ãƒœã‚¿ãƒ³
+    [SerializeField] private Button nextButton;//æ¬¡ã®ã‚¹ãƒ†ãƒ¼ã‚¸ç§»å‹•ãƒœã‚¿ãƒ³
+    [SerializeField] private AudioClip clickSE;//ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã¨ãã®SE
+    public string   nextLoadScene;//æ¬¡ã®ã‚¹ãƒ†ãƒ¼ã‚¸å
+    public string   retryLoadScene;//ä»Šã®ã‚¹ãƒ†ãƒ¼ã‚¸å
     private AudioSource audio;
     public FadeIN fade;
 
     void Start()
     {
         audio = GetComponent<AudioSource>();
-        //˜A‘Å–h~
+        //ãã‚Œãã‚Œã®ãƒœã‚¿ãƒ³ã®ç¨®é¡ã‚’æ±ºã‚ã‚‹
         var button1 = selectButton.OnClickAsObservable().Select(_ => ButtonType.select);
         var button2 = retryButton.OnClickAsObservable().Select(_ => ButtonType.retry);
         var button3 = nextButton.OnClickAsObservable().Select(_ => ButtonType.next);
 
-        //‰Ÿ‚³‚ê‚½ƒ{ƒ^ƒ“‚²‚Æ‚ÉÀs‚ğ•Ï‚¦‚é
+        //æŠ¼ã•ã‚ŒãŸãƒœã‚¿ãƒ³ã”ã¨ã«å®Ÿè¡Œã‚’å¤‰ãˆã‚‹
         Observable.Merge(button1, button2, button3)
             .ThrottleFirst(System.TimeSpan.FromSeconds(10))
             .Subscribe(x =>
             {
-                Debug.Log("ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½");
+                Debug.Log("ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸ");
                 switch (x)
                 {
                     case ButtonType.select:
@@ -53,21 +53,21 @@ public class ButtonManager : MonoBehaviour
             }).AddTo(this);
     }
 
-    //ƒXƒe[ƒW‘I‘ğ‰æ–Ê‚É–ß‚é
+    //ã‚¹ãƒ†ãƒ¼ã‚¸é¸æŠç”»é¢ã«æˆ»ã‚‹
     public void Select()
     {
         audio.PlayOneShot(clickSE);
         SceneManager.LoadScene("selectStage");
     }
 
-    //ƒŠƒgƒ‰ƒC‚·‚é
+    //ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹
     public void retry()
     {
         audio.PlayOneShot(clickSE);
         fade.In(retryLoadScene);
     }
 
-    //Ÿ‚ÌƒXƒe[ƒW‚ÉˆÚ“®‚·‚é
+    //æ¬¡ã®ã‚¹ãƒ†ãƒ¼ã‚¸ã«ç§»å‹•ã™ã‚‹
     public void Next()
     {
         audio.PlayOneShot(clickSE);
