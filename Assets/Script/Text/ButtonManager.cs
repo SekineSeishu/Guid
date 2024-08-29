@@ -6,47 +6,38 @@ using UnityEngine.SceneManagement;
 using UniRx;
 using UnityEngine.UI;
 
+enum ButtonType
+{
+    select,
+    retry,
+    next
+}
 public class ButtonManager : MonoBehaviour
 {
-    enum ButtonType
-    {
-        select,
-        retry,
-        next
-    }
 
-    [SerializeField] private ButtonType buttonType;
-    [SerializeField] private Button selectButton;
-    [SerializeField] private Button retryButton;
-    [SerializeField] private Button nextButton;
-    public string LoadScene;
+    [SerializeField] private Button selectButton;//選択画面に戻るボタン
+    [SerializeField] private Button retryButton;//リトライボタン
+    [SerializeField] private Button nextButton;//次のステージ移動ボタン
+    [SerializeField] private AudioClip clickSE;//ボタンを押したときのSE
+    public string   nextLoadScene;//次のステージ名
+    public string   retryLoadScene;//今のステージ名
     private AudioSource audio;
-    public Fade fade;
-    public GameObject fadeCanvas;
+    public FadeIN fade;
 
     void Start()
     {
         audio = GetComponent<AudioSource>();
-        fadeCanvas.SetActive(false);
-        IObservable<ButtonType> observable1 = selectButton
-            .OnClickAsObservable ()
-            .TakeUntilDestroy(this)
-            .Select(_ => ButtonType.select);
+        //連打防止
+        var button1 = selectButton.OnClickAsObservable().Select(_ => ButtonType.select);
+        var button2 = retryButton.OnClickAsObservable().Select(_ => ButtonType.retry);
+        var button3 = nextButton.OnClickAsObservable().Select(_ => ButtonType.next);
 
-        IObservable<ButtonType> observable2 = retryButton
-            .OnClickAsObservable()
-            .TakeUntilDestroy(this)
-            .Select(_ => ButtonType.retry);
-
-        IObservable<ButtonType> observable3 = nextButton
-            .OnClickAsObservable()
-            .TakeUntilDestroy(this)
-            .Select(_ => ButtonType.next);
-
-        Observable.Merge(observable1, observable2, observable3)
+        //押されたボタンごとに実行を変える
+        Observable.Merge(button1, button2, button3)
             .ThrottleFirst(System.TimeSpan.FromSeconds(10))
             .Subscribe(x =>
             {
+                Debug.Log("ボタンが押された");
                 switch (x)
                 {
                     case ButtonType.select:
@@ -55,32 +46,32 @@ public class ButtonManager : MonoBehaviour
                     case ButtonType.retry:
                         retry();
                         break;
-                    case ButtonType.next:
+                     case ButtonType.next:
                         Next();
                         break;
                 }
-            });
+            }).AddTo(this);
     }
 
+    //ステージ選択画面に戻る
     public void Select()
     {
-        audio.Play();
-        StartBool.Instance.OpenImage = false;
-        SceneManager.LoadScene("Title");
+        audio.PlayOneShot(clickSE);
+        SceneManager.LoadScene("selectStage");
     }
 
+    //リトライする
     public void retry()
     {
-        audio.Play();
-        StartBool.Instance.OpenImage = false;
-        fadeCanvas.SetActive(true);
+        audio.PlayOneShot(clickSE);
+        fade.In(retryLoadScene);
     }
 
+    //次のステージに移動する
     public void Next()
     {
-        audio.Play();
-        StartBool.Instance.OpenImage = false;
-        fadeCanvas.SetActive(true);
+        audio.PlayOneShot(clickSE);
+        fade.In(nextLoadScene);
     }
 
     // Update is called once per frame
