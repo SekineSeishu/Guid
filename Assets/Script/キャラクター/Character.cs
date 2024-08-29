@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum characterType
+{
+    Red,
+    Blue
+}
+
 public class Character : MonoBehaviour
 {
+    public characterType type;
     public static Character Instance;
     public MoveDirections moveDirection;//キャラクターの移動方向データ
     public Transform targetPosition;//移動先
     public Transform defaultRotation;//基本の向き
     private float movespeed = 0.7f;//移動スピード
     private Animator animator;
-    public bool redGoal;//赤幽霊のゴールフラグ
-    public bool blueGoal;//青幽霊のゴールフラグ
-    public bool red;//赤幽霊フラグ
-    public bool blue;//青幽霊フラグ
+    public bool goal;//赤幽霊のゴールフラグ
     public int nowXpos;//現在のx値
     public int nowZpos;//現在のy値
     public bool OnWorp;//ワープフラグ
@@ -27,8 +31,7 @@ public class Character : MonoBehaviour
     {
         //初期化　ゴールフラグをOFF
         OnWorp = false;//移動時以外ワープフラグをOFF
-        redGoal = false;
-        blueGoal = false;
+        goal = false;
         animator = GetComponent<Animator>();
         //現代の初期位置を渡す
         nowXpos = (int)transform.position.x;
