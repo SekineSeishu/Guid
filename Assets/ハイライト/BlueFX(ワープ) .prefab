@@ -4878,7 +4878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeGimic: {fileID: 0}
   worp: {fileID: 0}
-  OnWorp: 0
+  onWorp: 0
 --- !u!82 &8079830395813997118
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4891,7 +4891,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dbb9dd239808fa34cb275557d010c0cc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0

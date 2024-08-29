@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 46f311046d2104da8b56be3d0a49a119,
         type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46f311046d2104da8b56be3d0a49a119,
         type: 3}
@@ -232,12 +232,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51109564de1c4ae469837dc3630f3242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
+  moveDirection: {fileID: 0}
   targetPosition: {fileID: 0}
   defaultRotation: {fileID: 0}
-  redGoal: 0
-  blueGoal: 0
-  red: 0
-  blue: 1
+  goal: 0
   nowXpos: 0
   nowZpos: 0
   OnWorp: 0
