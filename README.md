@@ -5,7 +5,7 @@ ScriptableObjectを使ってプレイヤーのステージごとの移動可能�
 Asset/Script/ハイライト/HighlightManager<br>
 ハイライトが選択されたときに選択ハイライト以外のハイライトオブジェクトを削除するようにしました<br>
 <br>
-Asset/Script/Bloom/BloomManager<br>
+Asset/Script/Bloom/BloomManager     https://github.com/SekineSeishu/Guid/blob/main/Assets/Script/Bloom/BloomManager.cs<br>
 キャラクターを選択したときに選択したキャラクターにBloomをかけて選択している状態を分かりやすくした<br>
 <br>
 ボタンの連打防止にUniRxを使っています<br>
