@@ -25,21 +25,22 @@ public class Gimic : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Character character = other.gameObject.GetComponent<Character>();
+        Debug.Log(character.name);
         //赤キャラクターが赤ギミックを踏んだら実行
-        if (character.red && gameObject.tag == "redGimic")
+        if (character.type == characterType.Red && gameObject.tag == "RedGimic")
         {
             //隠していたオブジェクトを表示する
             audio.Play();
             activeGimic.SetActive(true);
             Debug.Log("赤ギミック起動");
             //チュートリアルステージだったら説明を消す
-            if (SceneManager.GetActiveScene().name == "stage")
+            if (tutorialManager.instance.gameObject.activeInHierarchy)
             {
-                tutorialManager.instance.nextTutorial();
+                tutorialManager.instance.tutorialText4.SetActive(false);
             }
         }
         //青キャラクターが青ギミックを踏んだら実行
-        if (character.blue && gameObject.tag == "blueGimic")
+        if (character.type == characterType.Blue && gameObject.tag == "BlueGimic")
         {
             audio.Play();
             activeGimic.SetActive(true);
