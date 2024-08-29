@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Character redCharacter;//赤キャラクター
     [SerializeField] private Character blueCharacter;//青キャラクター
     public bool Play;//移動可能フラグ
-    private float setTime;//リザルト出すための待ち時間
+    private bool setTime;//リザルト出すための待ち時間
     private AudioSource audio;
-    public GameObject GameOverText;
-    public AudioClip endSE;//クリアSE
+    [SerializeField] private GameObject GameOverText;
+    [SerializeField] private AudioClip cickSE;//キャラクタークリック時のSE
+    [SerializeField] private AudioClip endSE;//クリアSE
 
     private void Awake()
     {
@@ -27,21 +29,23 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //ステージごとの移動回数上限の設定
-        if (SceneManager.GetActiveScene().name == "stage")
+        if (SceneManager.GetActiveScene().name == "stage1")
         {
-            PlayCount = 15;
+            PlayCount = 50;
         }
         else if (SceneManager.GetActiveScene().name == "Stage2")
         {
-            PlayCount = 30;
+            PlayCount = 20;
         }
         else if (SceneManager.GetActiveScene().name == "Stage3")
         {
-            PlayCount = 20;
+            PlayCount = 30;
         }
-        setTime = 0;
+        //setTime = 0;
         GameOverText.SetActive(false);
+        setTime = true;
         Play = true;
         audio = GetComponent<AudioSource>();
         tutorial = GetComponent<tutorialManager>();
@@ -50,6 +54,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playCountText.text = PlayCount.ToString();//移動回数表示
         if (Input.GetMouseButtonDown(0))
         {
             //移動可能状態でかつ移動可能回数が0になっていない場合実行
@@ -59,34 +64,43 @@ public class GameManager : MonoBehaviour
             }
         }
         //クリア時の演出
-        if (redCharacter.redGoal && blueCharacter.blueGoal)
+        if (redCharacter.goal && blueCharacter.goal)
         {
-            //クリア後一定時間経ってからSEとUIを出す
-            Debug.Log("c");
-            setTime += Time.deltaTime;
-            if (setTime >= 1f)
+            Debug.Log("clear");
+            if (setTime)//一度だけ流す
             {
-                audio.PlayOneShot(endSE);
+                setTime= false;
+
+                StartCoroutine(stageClear());
             }
-            Invoke("stageClear", 2f);
         }
         //ゲームオーバー時の演出
-        if (PlayCount == 0　&& (!redCharacter.redGoal || !blueCharacter.blueGoal))
+        if (PlayCount == 0　&& (!redCharacter.goal || !blueCharacter.goal))
         {
-            //一定時間経ってからUIを出す
-            setTime += Time.deltaTime;
-            if (setTime >= 2f)
-            {
-                GameOverText.SetActive(true);
+            if (setTime)
+           {
+                setTime = false;
+                StartCoroutine(GameOver());
             }
         }
-        playCountText.text = PlayCount.ToString();
     }
 
     //リザルト表示
-    private void stageClear()
+    private IEnumerator stageClear()
     {
+        yield return new WaitForSeconds(2);
+        audio.PlayOneShot(endSE);
+        //２秒待ってから表示
+        yield return new WaitForSeconds(1);
         resultUI.SetActive(true);
+    }
+
+    //移動後ゲームオーバーテキスト表示
+    private IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(3);
+        GameOverText.SetActive(true);
+        GameOverText.transform.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.OutBack); ;
     }
     
     //選択キャラクターを取得
@@ -111,7 +125,7 @@ public class GameManager : MonoBehaviour
             if (targetObject.tag == "Character")
             {
                 Debug.Log(targetObject.name);
-                audio.Play();
+                audio.PlayOneShot(cickSE);
                 selectCharacter = targetObject;
                 HighlightManager.Instance.HighlightValidMoves(targetObject.GetComponent<Character>());
                 BloomManager.Instance.GoGhost(selectCharacter);
@@ -123,7 +137,7 @@ public class GameManager : MonoBehaviour
             //移動可能ハイライトの場合その地点の位置を渡す
             if (targetObject.tag == "highlight")
             {
-                audio.Play();
+                audio.PlayOneShot(cickSE);
                 HighlightManager.Instance.CharaMove(selectCharacter.GetComponent<Character>(), targetObject.transform);
                 PlayCount--;
                 Play = false;
