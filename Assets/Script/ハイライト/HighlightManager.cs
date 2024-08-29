@@ -21,20 +21,20 @@ public class HighlightManager : MonoBehaviour
         //選択したキャラクターの現在位置から移動できる場所にハイライトを生成する
         //すでにあるハイライトを削除する
         ClearHighlights();
-        if (selectCharacter.redGoal || selectCharacter.blueGoal)
+        if (selectCharacter.goal)
         {
             Debug.Log("null");
         }
         else
         {
-            if (selectCharacter.red)
+            if (selectCharacter.type == characterType.Red)
             {
                 characterName = "red";
             }
 
-            if (selectCharacter.blue)
+            if (selectCharacter.type == characterType.Blue)
             {
-                characterName = "red";
+                characterName = "blue";
             }
 
             List<Vector3> validMoves = selectCharacter.moveDirection.GetValidMove(characterName, selectCharacter.nowXpos, selectCharacter.nowZpos);
