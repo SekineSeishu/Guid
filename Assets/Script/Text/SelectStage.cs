@@ -124,26 +124,32 @@ public class SelectStage : MonoBehaviour
 
     public void GoStageClick()
     {
-        //詳細画面表示中
-        if (stageScene)
+        if (!onClose)//最初のクリックだけ実行
         {
-            //ステージ移動
-            onClose = true;
-            audioSource.PlayOneShot(startSE);
-            stageScene.transform.DOScale(new Vector3(0, 0, 0), 1f).SetEase(Ease.InBack);
-            Invoke("GoScene", 1);
+            //詳細画面表示中
+            if (stageScene)
+            {
+                //ステージ移動
+                onClose = true;
+                audioSource.PlayOneShot(startSE);
+                stageScene.transform.DOScale(new Vector3(0, 0, 0), 1f).SetEase(Ease.InBack);
+                Invoke("GoScene", 1);
+            }
         }
     }
 
     public void BackOnClick()
     {
-        //詳細画面表示中
-        if (stageScene)
+        if (!onClose)//最初のクリックだけ実行
         {
-            //選択ステージの詳細画面を閉じる
-            onClose = true;
-            audioSource.PlayOneShot(buttonSE);
-            stageScene.transform.DOScale(new Vector3(0, 0, 0), 1f).SetEase(Ease.InBack);
+            //詳細画面表示中
+            if (stageScene)
+            {
+                //選択ステージの詳細画面を閉じる
+                onClose = true;
+                audioSource.PlayOneShot(buttonSE);
+                stageScene.transform.DOScale(new Vector3(0, 0, 0), 1f).SetEase(Ease.InBack);
+            }
         }
     }
 
